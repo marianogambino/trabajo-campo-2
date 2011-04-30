@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://java.sun.com/xml/ns/javaee" 
+		xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+		id="WebApp_ID" version="2.5">
+  <display-name>TC2_EE</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsf</welcome-file>    
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.jspx</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>Faces Servlet</servlet-name>	
+	<url-pattern>*.jsf</url-pattern>			
+  </servlet-mapping>
+  
+  <context-param>
+    <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+    <param-value>.xhtml</param-value>    
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resources.application</param-value>
+  </context-param>
+  
+  <listener>
+    <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>com.sun.faces.application.WebappLifecycleListener</listener-class>
+  </listener>
+  
+  <session-config>
+    <session-timeout>60</session-timeout>
+  </session-config>
+  
+  <context-param>
+	  <description>Do not render comments in facelets (xhtml) pages. Default is false.</description>
+      <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+      <param-value>true</param-value>
+  </context-param>
+   
+  <context-param>
+	<param-name>javax.faces.PROJECT_STAGE</param-name>
+	<param-value>Development</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>javax.faces.CONFIG_FILES</param-name>
+    <param-value>/WEB-INF/faces-config.xml</param-value>
+  </context-param>
+  
+  <!--FACELETS--> 
+     
+  <context-param>
+ 	<param-name>facelets.DEVELOPMENT</param-name>
+ 	<param-value>true</param-value>
+  </context-param>
+ 
+  <context-param>
+ 	<param-name>com.sun.faces.validateXml</param-name>
+ 	<param-value>false</param-value>
+  </context-param>
+ 
+  <context-param>
+ 	<param-name>com.sun.faces.verifyObjects</param-name>
+ 	<param-value>false</param-value>
+  </context-param>
+  
+ <!-- END FACELETS-->
+  
+  <!-- SPRING -->
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>  
+  
+  <!-- FIN SPRING -->
+
+   
+  <!-- PRIMEFACES -->
+  
+   <servlet>  
+   	 <servlet-name>Resource Servlet</servlet-name>  
+     <servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>  
+   </servlet>  
+    
+   <servlet-mapping>  
+   	 <servlet-name>Resource Servlet</servlet-name>  
+   	 <url-pattern>/primefaces_resource/*</url-pattern>  
+   </servlet-mapping>  
+   
+   <context-param>  
+     <param-name>primefaces.skin</param-name>  
+     <param-value>none</param-value>  
+   </context-param>
+     
+   <filter>
+      <filter-name>PrimeFaces FileUpload Filter</filter-name>
+      <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+   </filter>
+   
+   <filter-mapping>
+      <filter-name>PrimeFaces FileUpload Filter</filter-name>
+      <servlet-name>Faces Servlet</servlet-name>
+   </filter-mapping>
+
+   <context-param>
+     <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+     <param-value>server</param-value>
+   </context-param>
+
+   <context-param>
+     <param-name>org.primefaces.component.captcha.PRIVATE_KEY</param-name>
+     <param-value>6LfwZwoAAAAAAEhRyntKF1PBzysAJLzqp2v-GMRR</param-value>
+   </context-param>
+   
+  <!-- FIN PRIMEFACES -->
+    
+</web-app>

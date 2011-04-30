@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		        xmlns:ui="http://java.sun.com/jsf/facelets"
+		        xmlns:h="http://java.sun.com/jsf/html"
+		        xmlns:f="http://java.sun.com/jsf/core"		        
+		        xmlns:c="http://java.sun.com/jstl/core"	
+		        xmlns:p="http://primefaces.prime.com.tr/ui"	       
+		        template="../../facelets/templates/loginLayout.xhtml">
+	
+<ui:define name="content">
+
+<f:view contentType="text/html">   		  
+	 
+<h:form>
+
+  <table align="center" border="0">
+     
+    <tr><td height="200" ></td></tr>
+  	<tr>	
+		<td>
+				
+		  <p:panel id="panel" header="Login"  >
+		  
+		    <!-- p:messages /-->  
+		    <h:panelGrid columns="2" >  
+		      
+		       <h:outputLabel>#{msg.username}</h:outputLabel>  
+		       <h:inputText id="username" value="#{usuarioLogin.nomUsuario}" required="true" label="Username" maxlength="30" size="15" />
+		       	
+		       <h:outputLabel>#{msg.password}</h:outputLabel>  
+		       <h:inputText id="password" value="#{usuarioLogin.password}" required="true" label="Password" maxlength="30" size="15"/>  
+		        <p:messages>#{usuarioLogin.message}</p:messages>
+		      	 
+ 		  	   <tr>
+ 		  	   		<td>
+ 		  	   			<p:commandButton value="Adherirse" update="panel,display"  />
+ 		  	   			<p:commandButton value="Ingresar"  update="panel,display" action="#{usuarioLogin.validarUsuario}"/> 		  	   
+ 		  	   		</td>	
+ 		  	   </tr>
+ 		  		        
+		    </h:panelGrid>
+		  </p:panel>
+		     
+	   </td>		   
+	</tr>	    
+		  
+  </table>
+  
+  <!-- action="#{usuarioLogin.validarUsuario}"  actionListener="\#{pprBean.savePerson}" --> 
+</h:form>
+</f:view>
+		           
+</ui:define>
+
+</ui:composition>
