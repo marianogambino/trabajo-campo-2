@@ -22,7 +22,9 @@
     <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
  
- 	<bean id="wsServices" class="um.appl.cmp2.ws.Servicios" /> 	
+ 	<bean id="wsServices" class="um.appl.cmp2.ws.Servicios" >
+ 		<property name="usuarioSrv" ref="usuarioSrv" />
+ 	</bean> 	
     <jaxws:endpoint id="webServices" implementor="#wsServices" address="/EEws" >
 	    <jaxws:features>
 	        <bean class="org.apache.cxf.feature.LoggingFeature" />
