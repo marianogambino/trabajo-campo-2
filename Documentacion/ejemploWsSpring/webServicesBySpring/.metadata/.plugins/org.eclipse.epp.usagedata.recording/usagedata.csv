@@ -1,0 +1,5 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.datatools.sqltools.db.derby.ui,1.0.0.v200906020900,"org.eclipse.datatools.sqltools.db.derby.ui",1302841470411
+stopped,bundle,org.eclipse.datatools.sqltools.db.generic.ui,1.0.0.v200906020900,"org.eclipse.datatools.sqltools.db.generic.ui",1302841470427
+stopped,bundle,org.eclipse.datatools.sqltools.debugger.core.ui,1.0.0.v200906022302,"org.eclipse.datatools.sqltools.debugger.core.ui",1302841470427
+stopped,bundle,org.eclipse.datatools.sqltools.routineeditor.ui,1.0.0.v200906022302,"org.eclipse.datatools.sqltools.routineeditor.ui",1302841470427

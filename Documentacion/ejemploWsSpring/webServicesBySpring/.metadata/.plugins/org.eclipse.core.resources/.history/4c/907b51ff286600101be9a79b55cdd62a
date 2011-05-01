@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean id="sayHelloService" class="test.TestWs" />
+ 
+<jaxws:endpoint id="sayHello" implementor="#sayHelloService" address="/HelloWorld">
+    <jaxws:features>
+        <bean class="org.apache.cxf.feature.LoggingFeature" />
+    </jaxws:features>
+</jaxws:endpoint>

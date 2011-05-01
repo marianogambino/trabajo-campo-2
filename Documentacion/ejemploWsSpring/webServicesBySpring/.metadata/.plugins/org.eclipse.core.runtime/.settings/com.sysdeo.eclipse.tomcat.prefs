@@ -1,0 +1,11 @@
+#Wed Apr 13 21:12:31 GFT 2011
+fixTomcatHomeBug=fixed
+contextsDir=E\:\\work\\webServers\\Tomcat 6.0.14\\apache-tomcat-6.0.14\\conf\\Catalina\\localhost
+tomcatDir=E\:\\work\\webServers\\Tomcat 6.0.14\\apache-tomcat-6.0.14
+configMode=serverFile
+tomcatJRE=1302736257937
+tomcatConfigFile=E\:\\work\\webServers\\Tomcat 6.0.14\\apache-tomcat-6.0.14\\conf\\server.xml
+eclipse.preferences.version=1
+tomcatVersion=tomcatV6
+managerUrl=http\://localhost\:8080/manager
+projectsInSourcePath=backend;
