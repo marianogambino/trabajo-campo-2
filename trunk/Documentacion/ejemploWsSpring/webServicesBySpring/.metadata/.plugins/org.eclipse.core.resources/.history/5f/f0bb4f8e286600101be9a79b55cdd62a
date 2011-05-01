@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package ws;
+
+/**
+ * @author Mariano
+ *
+ */
+public class TestWs implements IWs{
+
+	private static String HELLO = "Hola ";
+	
+	/**
+	 * 
+	 */
+	@Override
+	public String helloWordl(String name) {
+		
+		return HELLO+name;
+	}
+
+}

@@ -1,0 +1,31 @@
+!SESSION 2011-04-13 19:51:37.906 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_19
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_AR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 20:23:25.812
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: Premature end of file.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 20:49:19.625
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: XML document structures must start and end within the same entity.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 20:49:54.265
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: XML document structures must start and end within the same entity.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 20:50:07.000
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: White spaces are required after keyword PUBLIC in DOCTYPE decl.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 20:50:09.656
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: White spaces are required after keyword PUBLIC in DOCTYPE decl.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 21:02:54.062
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: White spaces are required after keyword PUBLIC in DOCTYPE decl.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 21:05:53.109
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: White spaces are required after keyword PUBLIC in DOCTYPE decl.
+
+!ENTRY org.eclipse.jst.jsp.core 2 2 2011-04-13 21:29:45.078
+!MESSAGE SAXParseException with /backend/wsSpring/WEB-INF/null/null (fatalError) while reading descriptor: White spaces are required after keyword PUBLIC in DOCTYPE decl.

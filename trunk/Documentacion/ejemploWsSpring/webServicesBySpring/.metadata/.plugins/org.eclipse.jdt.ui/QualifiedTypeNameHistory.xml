@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.jws.WebService"/>
+<fullyQualifiedTypeName name="ws.IWs"/>
+<fullyQualifiedTypeName name="org.apache.cxf.jaxws.JaxWsProxyFactoryBean"/>
+<fullyQualifiedTypeName name="org.apache.cxf.endpoint.Client"/>
+<fullyQualifiedTypeName name="org.apache.cxf.frontend.ClientProxy"/>
+<fullyQualifiedTypeName name="org.apache.cxf.transport.http.HTTPConduit"/>
+<fullyQualifiedTypeName name="org.apache.cxf.transports.http.configuration.HTTPClientPolicy"/>
+<fullyQualifiedTypeName name="testClientWs.ClientWs"/>
+</qualifiedTypeNameHistroy>

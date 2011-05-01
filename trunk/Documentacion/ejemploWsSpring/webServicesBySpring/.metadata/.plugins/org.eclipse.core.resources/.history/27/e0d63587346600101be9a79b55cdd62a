@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+package ws;
+
+/**
+ * @author Mariano
+ *
+ */
+public interface IWs {
+
+	public String helloWorld(String name);
+}
