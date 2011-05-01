@@ -15,8 +15,6 @@ import um.appl.cmp2.ws.IWs;
 @SuppressWarnings("serial")
 public class UsuarioSrvLoc extends Common implements UsuarioSrvLocItf 
 {
-	private CallServicesWS srv;
-	
 	public UsuarioSrvLoc(){}
 	
 	/**
@@ -24,9 +22,7 @@ public class UsuarioSrvLoc extends Common implements UsuarioSrvLocItf
 	 */
 	public IWs getService() {
 		
-		return srv.getInterface().srv;
+		return CallServicesWS.get_Interface().srv;
 	}
-
-	
 
 }

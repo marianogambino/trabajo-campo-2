@@ -15,7 +15,7 @@ import um.appl.cmp2.ws.IWs;
  * @author Mariano
  *
  */
-public class CallServicesWS implements ICallServices{
+public class CallServicesWS{
 
 	private static CallServicesWS ret;
 	public IWs srv;
@@ -37,19 +37,12 @@ public class CallServicesWS implements ICallServices{
         http.setClient(httpClientPolicy);
     }
  
-    private static synchronized CallServicesWS get_Interface() {
+    public static synchronized CallServicesWS get_Interface() {
  
         if (ret == null)
             ret = new CallServicesWS();
         return ret;
     }
 
-    /**
-     * Obtiene la interface para la llama a los servicios.
-     */
-	@Override
-	public CallServicesWS getInterface() {
-		return get_Interface();
-	}
-	
+    	
 }
