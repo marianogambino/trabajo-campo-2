@@ -1,69 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. -->
-<project basedir="." default="build" name="common">
-    <property environment="env"/>
-    <property name="backend.location" value="../backend"/>
-    <property name="frontend.location" value="../frontend"/>
-    <property name="ECLIPSE_HOME" value="../../../../Software/Eclipse Helios/eclipse"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.6"/>
-    <property name="source" value="1.6"/>
-    <path id="common.classpath">
-        <pathelement location="clasess"/>
-    </path>
-    <target name="init">
-        <mkdir dir="clasess"/>
-        <copy includeemptydirs="false" todir="clasess">
-            <fileset dir="src">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="clasess"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="clasess" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="common.classpath"/>
-        </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
-        <ant antfile="build.xml" dir="${backend.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${backend.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
-        <ant antfile="build.xml" dir="${frontend.location}" inheritAll="false" target="clean"/>
-        <ant antfile="build.xml" dir="${frontend.location}" inheritAll="false" target="build">
-            <propertyset>
-                <propertyref name="build.compiler"/>
-            </propertyset>
-        </ant>
-    </target>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
+<?xml version='1.0' encoding='iso-8859-1'?>
+
+<project name="commonJar" default="commonJar" basedir=".">
+
+        <property name="src" value="${basedir}/src"/>
+        <property name="classes" value="${basedir}/classes"/>
+        <property name="jar" value="${basedir}/jar" />
+        <property name="lib" value="C:/Archivos de programa/java/jre6/lib" />
+		<property name="frontendLib" value="D:/UM/trabajoCampo2/projectCampo_tresCapas/frontend/webapp/WEB-INF/lib" />
+	    <property name="backendLib" value="D:/UM/trabajoCampo2/projectCampo_tresCapas/backend/webapp/WEB-INF/lib" />
+
+        <path id="build.class.path">
+        <fileset dir="${lib}">
+                <include name="**/*.jar"/>
+                </fileset>                  
+        </path>
+        
+        <!-- Fin Classpath -->
+
+        <target name="jar">
+                <mkdir dir="${jar}"/>
+                <jar destfile="${jar}/cmp2common.jar"  basedir="${classes}"/>
+        </target>
+
+        <target name="compile" >
+                <mkdir dir="${classes}"/>
+                <javac srcdir="${src}" destdir="${classes}" >
+                	<classpath refid="build.class.path"/>
+                </javac>
+        </target>
 	
-	
+		<!-- Borra el classes, y los jar del frontent y del backend  -->	
+		<target name="delete" >
+			<delete dir="{classes}" />
+			<delete file="${frontendLib}/cmp2common.jar"  />
+			<delete file="${backendLib}cmp2common.jar"/>
+		</target>
+        
+		<!-- Copia el jar cmp2common a al lib del WEB-INF del frontend y backend -->	
+        <target name="commonJar" depends="delete,compile,jar">           	
+        	<copy file="${jar}/cmp2common.jar" todir="${frontendLib}"/>
+        	<copy  file="${jar}/cmp2common.jar" todir="${backendLib}"/>        	 
+        </target>
+
 </project>
+
+
