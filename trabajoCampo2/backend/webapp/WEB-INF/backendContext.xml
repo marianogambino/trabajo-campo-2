@@ -24,6 +24,7 @@
  
  	<bean id="wsServices" class="um.appl.cmp2.ws.Servicios" >
  		<property name="usuarioSrv" ref="usuarioSrv" />
+ 		<property name="utilSrv" ref="utilSrv" />
  	</bean> 	
     <jaxws:endpoint id="webServices" implementor="#wsServices" address="/EEws" >
 	    <jaxws:features>
@@ -88,6 +89,13 @@
 		<property name="usuarioAppl" ref="usuarioAppl" />
 	</bean>
 	
+	<!-- Servicio de Utilidades -->
+	
+	<bean id="utilAppl" class="um.appl.cmp2.util.appl.UtilAppl" scope="prototype" />		
+	
+	<bean id="utilSrv" class="um.appl.cmp2.util.srv.UtilSrv" scope="prototype">		
+		<property name="utilAppl" ref="utilAppl" />
+	</bean>
 	
 
 </beans>

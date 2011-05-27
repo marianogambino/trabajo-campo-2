@@ -16,7 +16,7 @@ public class TestFechaActual {
 	public static void main(String[] args)
 	{		
 		System.out.println(getFechaFormateada(getFechaActual()));
-		System.out.println(UtilAppl.getFechaFormateada(new DateTime().toDate(), UtilAppl.FORMATO_FECHA));
+		System.out.println((new UtilAppl()).getFechaFormateada(new DateTime().toDate(), UtilAppl.FORMATO_FECHA));
 	}
 	
 	public static Date getFechaActual()

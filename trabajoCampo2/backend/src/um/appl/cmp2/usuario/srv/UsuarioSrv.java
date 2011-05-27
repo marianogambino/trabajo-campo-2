@@ -6,10 +6,12 @@ package um.appl.cmp2.usuario.srv;
 import org.springframework.stereotype.Service;
 
 import um.appl.cmp2.commons.common.Common;
+import um.appl.cmp2.exeptions.BackendException;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
 import um.appl.cmp2.usuario.dobj.UsuarioDO;
 import um.appl.cmp2.usuario.itf.UsuarioApplItf;
 import um.appl.cmp2.usuario.itf.UsuarioSrvItf;
+import um.appl.cmp2.util.constantes.Constantes;
 import crm.tools.dzr.DzrUtils;
 
 /**
@@ -33,26 +35,32 @@ public class UsuarioSrv extends Common implements UsuarioSrvItf
 	/**
 	 * 
 	 */
-	public void actualizarUsuario(UsuarioCObj usuario) throws Exception 
+	public void actualizarUsuario(UsuarioCObj usuario)
 	{		
-		this.getUsuarioAppl().update(getDO(usuario));
+		//this.getUsuarioAppl().update(getDO(usuario));
 	}
 
 	/**
 	 * 
 	 */
-	public void crearUsuario(UsuarioCObj usuario) throws Exception 
+	public void crearUsuario(UsuarioCObj usuario)
 	{
-		this.getUsuarioAppl().save(getDO(usuario));
+		//this.getUsuarioAppl().save(getDO(usuario));
 	}
 	
+	
 	/**
+	 * @throws BackendException 
 	 * @throws Exception 
 	 * 
 	 */
-	public UsuarioCObj findById(Long id) throws Exception 
+	public UsuarioCObj findById(Long id) throws BackendException
 	{	
-		return getCObj((UsuarioDO)this.getUsuarioAppl().findById(id));
+		UsuarioCObj cobj = null;
+		UsuarioDO usu;
+		usu = (UsuarioDO) this.getUsuarioAppl().findById(id);
+		cobj = DzrUtils.convert(usu, UsuarioCObj.class);
+		return cobj;
 	}
 
 
@@ -71,51 +79,46 @@ public class UsuarioSrv extends Common implements UsuarioSrvItf
 		this.usuarioAppl = usuarioAppl;
 	}
 	
-	/**
-	 * 
-	 * @param usu
-	 * @return
-	 */
-	private UsuarioDO getDO(UsuarioCObj usu)
-	{
-		return DzrUtils.convert(usu, UsuarioDO.class);
-	}
 	
 	/**
 	 * 
-	 * @param usu
-	 * @return
 	 */
-	private UsuarioCObj getCObj(UsuarioDO usu)
+	public UsuarioCObj validarUsuarioPassword(String nomUsu, String pass)
 	{
-		return DzrUtils.convert(usu, UsuarioCObj.class);
-	}
-
-	/**
-	 * 
-	 */
-	public Boolean validarPassword(String nomUsu, String pass) throws Exception
-	{
-		UsuarioDO usu = this.getUsuarioAppl().findByNameUser(nomUsu);
+		UsuarioCObj usuCObj = new UsuarioCObj();
 		
-		if(usu != null)
-		{
-			if(usu.getPassword().equalsIgnoreCase(pass))
-				return true;			
+		try{
+			if(nomUsu!=null){
+				usuCObj = this.getUsuarioAppl().findByNameUser(nomUsu);
+				
+				//si el usuario y contraseña no son validos	
+				if(!usuCObj.getNombre().equalsIgnoreCase(nomUsu)||!usuCObj.getPassword().equalsIgnoreCase(pass)){
+					usuCObj.setMensaje(true);
+					usuCObj.setDescripcionMensaje(Constantes.ERRROR_USUARIO_CONTRASEÑA);
+				}
+			}else{
+				usuCObj.setMensaje(true);
+				usuCObj.setDescripcionMensaje(Constantes.ERRROR_USUARIO_CONTRASEÑA);
+			}
+			
+		}catch(BackendException e){
+			e.setMensaje(usuCObj);
 		}
-		return false;
+		return usuCObj;
 	}
 
 	/**
 	 * 
 	 */
-	public Boolean validarUsuario(String nomUsu) throws Exception 
+	public UsuarioCObj validarUsuario(String nomUsu) 
 	{	
-		UsuarioDO usu = this.getUsuarioAppl().findByNameUser(nomUsu);
-		
-		if(usu != null)
-			return true;
-		return false;
+		UsuarioCObj usuCObj = null;
+		try {
+			usuCObj = this.getUsuarioAppl().findByNameUser(nomUsu);
+		} catch (BackendException e) {
+			e.setMensaje(usuCObj);
+		}
+		return usuCObj;
 	}
 	
 
