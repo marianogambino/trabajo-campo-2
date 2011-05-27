@@ -4,8 +4,11 @@ import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import um.appl.cmp2.exeptions.BackendException;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
+import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
 import um.appl.cmp2.usuario.itf.UsuarioSrvItf;
+import um.appl.cmp2.util.itf.UtilSrvlItf;
 
 /**
  * 
@@ -17,6 +20,9 @@ public class Servicios implements IWs{
 
 	@Autowired
 	private UsuarioSrvItf usuarioSrv;
+	
+	@Autowired 
+	private UtilSrvlItf utilSrv;
 	
 	
 	/**
@@ -40,34 +46,71 @@ public class Servicios implements IWs{
 	}
 
 	@Override
-	public void crearUsuario(UsuarioCObj usuario) throws Exception {
+	public void crearUsuario(UsuarioCObj usuario){
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void actualizarUsuario(UsuarioCObj usuario) throws Exception {
+	public void actualizarUsuario(UsuarioCObj usuario){
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public UsuarioCObj findById(Long id) throws Exception {
-		// TODO Auto-generated method stub
-		return getUsuarioSrv().findById(id);
-	}
-
-	@Override
-	public Boolean validarUsuario(String nomUsu) throws Exception {
+	public UsuarioCObjItf findById(Long id){
 		
-		return getUsuarioSrv().validarUsuario(nomUsu);
+		UsuarioCObjItf cobj = null;
+		try {
+			cobj = getUsuarioSrv().findById(id);
+		} catch (BackendException e) {
+			e.setMensaje(cobj);
+		}
+		return cobj;
+		
 	}
 
 	@Override
-	public Boolean validarPassword(String nomUsu, String pass) throws Exception {
-		// TODO Auto-generated method stub
-		return getUsuarioSrv().validarPassword(nomUsu, pass);
+	public UsuarioCObjItf validarUsuario(String nomUsu){
+		UsuarioCObjItf cobj = null;
+		try {
+			cobj =  getUsuarioSrv().validarUsuario(nomUsu);
+		} catch (BackendException e) {
+			e.setMensaje(cobj);
+		}
+		return cobj;
 	}
+
+	@Override
+	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass){
+		UsuarioCObjItf cobj = null;
+		try {
+			cobj = getUsuarioSrv().validarUsuarioPassword(nomUsu, pass);
+		}catch (BackendException e) {
+			e.setMensaje(cobj);
+		}
+		return cobj;
+	}
+
+	@Override
+	public String getFechaActual() {
+		return utilSrv.getFechaActualFormateda();
+	}
+
+	/**
+	 * @return the utilSrv
+	 */
+	public UtilSrvlItf getUtilSrv() {
+		return utilSrv;
+	}
+
+	/**
+	 * @param utilSrv the utilSrv to set
+	 */
+	public void setUtilSrv(UtilSrvlItf utilSrv) {
+		this.utilSrv = utilSrv;
+	}
+	
 	
 	
 	

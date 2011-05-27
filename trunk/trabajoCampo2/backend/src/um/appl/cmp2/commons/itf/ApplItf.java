@@ -1,5 +1,7 @@
 package um.appl.cmp2.commons.itf;
 
+import um.appl.cmp2.exeptions.BackendException;
+
 /**
  * 
  * @author Mariano
@@ -8,14 +10,14 @@ package um.appl.cmp2.commons.itf;
  */
 public interface ApplItf 
 {
-	public <T> void save(T t) throws Exception;
+	public <T> void save(T t) throws BackendException;
 	
-	public <T> void delete(T t) throws Exception;
+	public <T> void delete(T t) throws BackendException;
 	
-	public <T> T findById(Long t) throws Exception;
+	public <T> T findById(Long t) throws BackendException;
 	
-	public <T> T find(T t) throws Exception;
+	public <T> T find(T t) throws BackendException;
 	
-	public <T> void update(T t) throws Exception;
+	public <T> void update(T t) throws BackendException;
 	
 }
