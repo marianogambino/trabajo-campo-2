@@ -37,7 +37,7 @@ public class CallServicesWS{
         http.setClient(httpClientPolicy);
     }
  
-    public static synchronized CallServicesWS get_Interface() {
+    public static synchronized CallServicesWS getInterface() {
  
         if (ret == null)
             ret = new CallServicesWS();

@@ -4,74 +4,76 @@
 package um.appl.cmp2.usuario.bdlg;
 
 import um.appl.cmp2.commons.common.Common;
+import um.appl.cmp2.srvLoc.SrvLoc;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
-import um.appl.cmp2.usuario.itf.UsuarioSrvItf;
-import um.appl.cmp2.usuario.itf.UsuarioSrvLocItf;
+import um.appl.cmp2.usuario.itf.UsuarioBDlgItf;
+import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
+
 
 /**
  * @author Mariano
  *
  */
 @SuppressWarnings("serial")
-public class UsuarioBDlg extends Common implements UsuarioSrvItf 
+public class UsuarioBDlg extends Common implements UsuarioBDlgItf 
 {
-	private UsuarioSrvLocItf usuarioSrvLoc;
+	private SrvLoc srvLoc;
 	
 	public UsuarioBDlg(){}
 	
 	/**
 	 * 
 	 */
-	public void actualizarUsuario(UsuarioCObj usuario) throws Exception 
+	public void actualizarUsuario(UsuarioCObj usuario)
 	{
-		this.getUsuarioSrvLoc().getService().actualizarUsuario(usuario);
+		this.getSrvLoc().getService().actualizarUsuario(usuario);
 	}
 
 	/**
 	 * 
 	 */
-	public void crearUsuario(UsuarioCObj usuario) throws Exception 
+	public void crearUsuario(UsuarioCObj usuario)
 	{	
-		this.getUsuarioSrvLoc().getService().crearUsuario(usuario);
+		this.getSrvLoc().getService().crearUsuario(usuario);
 	}
 
 	/**
 	 * @throws Exception 
 	 * 
 	 */
-	public UsuarioCObj findById(Long id) throws Exception 
+	public UsuarioCObjItf findById(Long id)
 	{	
-		return this.getUsuarioSrvLoc().getService().findById(id);
+		return this.getSrvLoc().getService().findById(id);
 	}
 
 	/**
 	 * @return the usuarioSrvLoc
 	 */
-	public UsuarioSrvLocItf getUsuarioSrvLoc() {
-		return usuarioSrvLoc;
+	public SrvLoc getSrvLoc() {
+		return srvLoc;
 	}
 
 	/**
 	 * @param usuarioSrvLoc the usuarioSrvLoc to set
 	 */
-	public void setUsuarioSrvLoc(UsuarioSrvLocItf usuarioSrvLoc) {
-		this.usuarioSrvLoc = usuarioSrvLoc;
+	public void setSrvLoc(SrvLoc srvLoc) {
+		this.srvLoc = srvLoc;
 	}
 
 	/**
 	 * 
 	 */
-	public Boolean validarPassword(String nomUsu, String pass) throws Exception 
+	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass)
 	{		
-		return this.getUsuarioSrvLoc().getService().validarPassword(nomUsu, pass);
+		return this.getSrvLoc().getService().validarUsuarioPassword(nomUsu, pass);
 	}
 
 	/**
 	 * 
 	 */
-	public Boolean validarUsuario(String nomUsu) throws Exception 
+	public UsuarioCObjItf validarUsuario(String nomUsu)
 	{		
-		return this.getUsuarioSrvLoc().getService().validarUsuario(nomUsu);
+		return this.getSrvLoc().getService().validarUsuario(nomUsu);
 	}
 	
 }
