@@ -3,17 +3,40 @@
  */
 package um.appl.cmp2.usuario.cobj;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import um.appl.cmp2.commons.cobj.CObj;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import um.appl.cmp2.mensajeGenerico.MensajeGenerico;
+import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
+
 
 /**
  * @author Mariano
  *
  */
-@SuppressWarnings("serial")
-public class UsuarioCObj extends CObj
+
+public class UsuarioCObj extends MensajeGenerico implements UsuarioCObjItf,Serializable
 {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7802757766999349577L;
+	
+	public static class Adapter extends XmlAdapter<UsuarioCObj, UsuarioCObjItf> {
+		@Override
+		public UsuarioCObj marshal(UsuarioCObjItf v) throws Exception {
+		    return (UsuarioCObj) v;
+		}
+		
+		@Override
+		public UsuarioCObjItf unmarshal(UsuarioCObj v) throws Exception {
+		    return v;
+		}
+	}
+	
+	
 	private Long id;
 	private String nombre;
 	private String password;
@@ -134,7 +157,6 @@ public class UsuarioCObj extends CObj
 	public void setOptimistickLock(Long optimistickLock) {
 		this.optimistickLock = optimistickLock;
 	}
-	
 	
 	
 }
