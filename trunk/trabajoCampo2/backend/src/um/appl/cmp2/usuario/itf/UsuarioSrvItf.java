@@ -18,6 +18,6 @@ public interface UsuarioSrvItf
 	
 	public UsuarioCObj validarUsuario(String nomUsu) throws BackendException;
 	
-	public UsuarioCObj validarUsuarioPassword(String nomUsu, String pass) throws BackendException;
+	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass) throws BackendException;
 		
 }

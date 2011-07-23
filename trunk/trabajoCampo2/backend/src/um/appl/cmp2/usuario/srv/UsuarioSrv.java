@@ -10,6 +10,7 @@ import um.appl.cmp2.exeptions.BackendException;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
 import um.appl.cmp2.usuario.dobj.UsuarioDO;
 import um.appl.cmp2.usuario.itf.UsuarioApplItf;
+import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
 import um.appl.cmp2.usuario.itf.UsuarioSrvItf;
 import um.appl.cmp2.util.constantes.Constantes;
 import crm.tools.dzr.DzrUtils;
@@ -83,9 +84,9 @@ public class UsuarioSrv extends Common implements UsuarioSrvItf
 	/**
 	 * 
 	 */
-	public UsuarioCObj validarUsuarioPassword(String nomUsu, String pass)
+	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass)
 	{
-		UsuarioCObj usuCObj = new UsuarioCObj();
+		UsuarioCObjItf usuCObj = new UsuarioCObj();
 		
 		try{
 			if(nomUsu!=null){
