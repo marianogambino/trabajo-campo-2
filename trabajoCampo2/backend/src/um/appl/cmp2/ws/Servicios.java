@@ -83,7 +83,7 @@ public class Servicios implements IWs{
 
 	@Override
 	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass){
-		UsuarioCObjItf cobj = null;
+		UsuarioCObjItf cobj = new UsuarioCObj();
 		try {
 			cobj = getUsuarioSrv().validarUsuarioPassword(nomUsu, pass);
 		}catch (BackendException e) {

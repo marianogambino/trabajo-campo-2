@@ -32,13 +32,13 @@ public class UsuarioAppl extends Appl implements UsuarioApplItf
 	 */
 	public UsuarioCObj findByNameUser(String nomUsu) throws BackendException
 	{		
-		UsuarioCObj usuCObj = null;
+		UsuarioCObj usuCObj = new UsuarioCObj();
 		
 		//Retornar solo DOs
 		try{
 			Query q = getEm().createQuery("select u from UsuarioDO u where u.nombre =:nom ");
 			q.setParameter("nom", nomUsu);		
-			UsuarioDO usu = (UsuarioDO) q.getResultList().get(0);
+			UsuarioDO usu = (UsuarioDO) q.getSingleResult();
 			usuCObj = DzrUtils.convert(usu, UsuarioCObj.class);			
 			
 		}catch(RuntimeException e){
