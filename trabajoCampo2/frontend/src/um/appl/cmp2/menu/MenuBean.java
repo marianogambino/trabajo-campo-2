@@ -58,7 +58,7 @@ public class MenuBean {
 		submenu.getChildren().add(item);
 		
 		item = new MenuItem();
-		item.setValue("Alta consumo de energia");
+		item.setValue("Baja consumo de energia");
 		item.setUrl("#");
 		submenu.getChildren().add(item);
 		
