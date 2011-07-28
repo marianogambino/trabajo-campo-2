@@ -50,6 +50,7 @@ public class UsuarioBDlg extends Common implements UsuarioBDlgItf
 	 * @return the usuarioSrvLoc
 	 */
 	public SrvLoc getSrvLoc() {
+		
 		return srvLoc;
 	}
 
@@ -65,7 +66,8 @@ public class UsuarioBDlg extends Common implements UsuarioBDlgItf
 	 */
 	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass)
 	{		
-		return this.getSrvLoc().getService().validarUsuarioPassword(nomUsu, pass);
+		srvLoc = new SrvLoc();
+		return srvLoc.getService().validarUsuarioPassword(nomUsu, pass);
 	}
 
 	/**

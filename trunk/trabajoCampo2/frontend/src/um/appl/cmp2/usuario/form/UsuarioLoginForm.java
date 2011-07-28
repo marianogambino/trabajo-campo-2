@@ -3,6 +3,7 @@
  */
 package um.appl.cmp2.usuario.form;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,6 @@ import um.appl.cmp2.commons.common.Common;
 import um.appl.cmp2.usuario.bdlg.UsuarioBDlg;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
 import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
-import um.appl.cmp2.util.constantes.Constantes;
 
 /**
  * @author Mariano
@@ -19,11 +19,11 @@ import um.appl.cmp2.util.constantes.Constantes;
  */
 @SuppressWarnings("serial")
 @Controller
-//@ManagedBean(name="usuarioLogin")
+@ManagedBean(name="usuarioLoginForm")
 @SessionScoped
 public class UsuarioLoginForm extends Common
 {
-	private UsuarioCObjItf usuario; // ver
+	private UsuarioCObjItf usuario;
 	private String message;
 	private UsuarioBDlg blg;
 	
@@ -101,8 +101,8 @@ public class UsuarioLoginForm extends Common
 	public String validarUsuario()
 	{
 		String path = null;
-		
-		usuario = (UsuarioCObjItf) this.getBlg().validarUsuarioPassword("","");//getNombre() ,getPass());
+		blg = new UsuarioBDlg();
+		usuario = (UsuarioCObjItf) getBlg().validarUsuarioPassword(getNombre() ,getPass());
 		
 		if(!usuario.isMensaje())
 			path = "/tc2/main/main.xhtml?faces-redirect=true";//Constantes.MAIN; //Agregar una constante
