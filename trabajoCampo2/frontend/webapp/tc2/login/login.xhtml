@@ -24,16 +24,16 @@
 		    <h:panelGrid columns="2" >  
 		      
 		       <h:outputLabel>#{msg.username}</h:outputLabel>  
-		       <h:inputText id="username" value="#{usuarioLogin.nomUsuario}" required="true" label="Username" maxlength="30" size="15" />
+		       <h:inputText id="username" value="#{usuarioLoginForm.nombre}" required="true" label="Username" maxlength="30" size="15" />
 		       	
 		       <h:outputLabel>#{msg.password}</h:outputLabel>  
-		       <h:inputText id="password" value="#{usuarioLogin.password}" required="true" label="Password" maxlength="30" size="15"/>  
+		       <h:inputText id="password" value="#{usuarioLoginForm.pass}" required="true" label="Password" maxlength="30" size="15"/>  
 		        <p:messages>#{usuarioLogin.message}</p:messages>
 		      	 
  		  	   <tr>
  		  	   		<td>
  		  	   			<p:commandButton value="Adherirse" update="panel,display"  />
- 		  	   			<p:commandButton value="Ingresar"  update="panel,display" action="#{usuarioLogin.validarUsuario}"/> 		  	   
+ 		  	   			<p:commandButton value="Ingresar"  update="panel,display" action="#{usuarioLoginForm.validarUsuario}"/> 		  	   
  		  	   		</td>	
  		  	   </tr>
  		  		        

@@ -6,11 +6,7 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd" 
     version="2.0">
 	<application>
-	
-	<!-- view-handler>
-      com.sun.facelets.FaceletViewHandler
-    </view-handler-->   
-    
+   
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 
 		<locale-config>
@@ -19,31 +15,9 @@
 		      <supported-locale>es</supported-locale>
     	</locale-config>
     	
-    	<message-bundle>crm.appl.cmp2.messages.ResourcesMessages</message-bundle>
+    	<message-bundle>um.appl.cmp2.messages.ResourcesMessages</message-bundle>
 					
 	</application>
-	
-	<!-- managed-bean>
-	    <managed-bean-name>usuarioLogin</managed-bean-name>
-	    <managed-bean-class>crm.appl.cmp2.usuario.form.UsuarioLoginForm</managed-bean-class>
-	    <managed-bean-scope>session</managed-bean-scope>
-  	</managed-bean>
-	
-	<navigation-rule>
-		<from-view-id>/tc2/login/login.xhtml</from-view-id>
-		
-		<navigation-case>
-			<from-outcome>main</from-outcome>
-			<to-view-id>/tc2/main/main.xhtml</to-view-id>
-		</navigation-case>
-			
-		<navigation-case>
-			<from-outcome>error</from-outcome>
-			<to-view-id>/tc2/login/login.xhtml</to-view-id>
-		</navigation-case>
-		
-	</navigation-rule-->
-	
 	
 	
 	

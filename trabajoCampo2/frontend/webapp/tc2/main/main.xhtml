@@ -6,45 +6,43 @@
 		        xmlns:p="http://primefaces.prime.com.tr/ui"	       
 		        template="../../facelets/templates/mainTmp.xhtml">
 	
+<ui:define name="header">
+	     <h:graphicImage id="imgEnerArg" value="../../images/enerArg.jpg" ></h:graphicImage>
+</ui:define>
 <ui:define name="navigation">
-	<!-- p:menubar>
-		<p:submenu label="Mail">
-			<p:menuitem value="Gmail" url="http://www.google.com" />
-			<p:menuitem value="Hotmail" url="http://www.hotmail.com" />
-			<p:menuitem value="Yahoo Mail" url="http://mail.yahoo.com" />
-		</p:submenu>
-		<p:submenu label="Videos">
-			<p:menuitem value="Youtube" url="http://www.youtube.com" />
-			<p:menuitem value="Break" url="http://www.break.com" />
-		</p:submenu>
-	</p:menubar-->
-	
-	<p:menubar model="#{menuBean.model}" />
-		           
+	<p:menubar model="#{menuBean.model}" />           
 </ui:define>
 	
 <ui:define name="content">
 
-<f:view contentType="text/html">   		  
-	 
-<h:form>
-
-  <table align="center" border="0">
-     
-    <tr>	
-		<td>
-				
+	<f:view contentType="text/html">   		  
+		 
+		<h:form>
 	
-		     
-	   </td>		   
-	</tr>	    
-		  
-  </table>
-  
-  <!-- actionListener="\#{pprBean.savePerson}" --> 
-</h:form>
-</f:view>
+	  		<table align="center" border="0">
+	     
+	    	<tr >	
+				<td height="455"><img src="../../images/presentacion.jpg" alt="" /></td>		   
+			</tr>	    
+			  
+	  		</table>
+	  
+		</h:form>
+	
+	</f:view>
 		           
+</ui:define>
+
+<ui:define name="footer">
+ 
+        <!-- p:separator/-->
+ 		<tr>	
+			<td> <p:graphicText value="#{msg.mensajeBienvenida}" fontName="Arial" fontSize="12"  /></td>
+			<td> <p:graphicText  value="#{usuarioLoginForm.usuario.nombre}" fontName="Arial" fontSize="12" fontStyle="bold" /></td>	
+		</tr>
+		
+		
+
 </ui:define>
 
 </ui:composition>
