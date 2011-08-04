@@ -124,7 +124,7 @@ public class MenuBean {
 		submenu.setLabel("Impuesto");
 		item = new MenuItem();
 		item.setValue("Administrar Impuesto");
-		item.setUrl("#");
+		item.setUrl("/tc2/impuesto/admImpuesto.jsf");
 		submenu.getChildren().add(item);
 		
 		model.addSubmenu(submenu);

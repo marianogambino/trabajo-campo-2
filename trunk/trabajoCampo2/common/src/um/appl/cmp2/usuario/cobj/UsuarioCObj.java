@@ -3,7 +3,6 @@
  */
 package um.appl.cmp2.usuario.cobj;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
@@ -16,7 +15,7 @@ import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
  *
  */
 
-public class UsuarioCObj extends MensajeGenerico implements UsuarioCObjItf,Serializable
+public class UsuarioCObj extends MensajeGenerico implements UsuarioCObjItf
 {
 	
 	/**
