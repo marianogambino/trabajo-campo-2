@@ -1,0 +1,97 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		        xmlns:ui="http://java.sun.com/jsf/facelets"
+		        xmlns:h="http://java.sun.com/jsf/html"
+		        xmlns:f="http://java.sun.com/jsf/core"		        
+		        xmlns:c="http://java.sun.com/jstl/core"	
+		        xmlns:p="http://primefaces.prime.com.tr/ui"	       
+		        template="../main/main.xhtml">
+		        
+		      
+<ui:define name="content">
+
+<f:view contentType="text/html">   		  
+  <h:form id="form">  
+  
+	<table align="center" border="0">
+     
+    	<tr><td height="150" width="400"></td></tr>
+  		<tr>	
+			<td>
+  		   
+		    <p:dataTable var="imp" value="#{impuetoTlb.impuestos}"  
+		                 selection="#{impuetoTlb.selectedImpuesto}" selectionMode="single"
+		                 styleClass=".ui-datatable .ui-datatable-data td"
+		                  >  
+		  
+		        <f:facet name="header">  
+		            Click "View" button after selecting a row to see details  
+		        </f:facet>  
+		  
+		        <p:column >  
+		            <f:facet name="header">  
+		                <h:outputText value="#{msg.impuestoDescripcion}" />  
+		            </f:facet>  
+		            <h:outputText value="#{imp.descripcion}" />  
+		        </p:column>  
+		  
+		        <p:column>  
+		            <f:facet name="header">  
+		                <h:outputText value="#{msg.impuestoValorPorcentaje}" />  
+		            </f:facet>  
+		            <h:outputText value="#{imp.valorPorcentaje}" />  
+		        </p:column>
+		          
+		      	
+				  
+				  <!-- table align="left" border="0" -->
+				  	
+					<f:facet name="footer" >
+					
+					
+			             <p:commandButton value="Consulta" update="form:display" oncomplete="impuestoDialog.show()"/> 
+			    	  
+			     	
+					   	          
+			             <p:commandButton value="Agregar" update="form:display" oncomplete="impuestoDialog.show()"/>       
+			  	    
+			         </f:facet>  
+			         
+			       <!-- /table-->
+			       
+		    </p:dataTable> 
+		     
+	 	</td>		   
+	  </tr>	  
+	  <tr><td height="201" ></td></tr>  
+		  
+  	</table>
+		 
+	<!-- PopUp - Dialog --> 
+		 
+		    <p:dialog header="#{msg.impuestoDetalle}" widgetVar="impuestoDialog" resizable="false"  
+		              width="200" showEffect="clip" hideEffect="fold">  
+		  
+		        <h:panelGrid id="display" columns="2" cellpadding="4">  
+		  
+		            <!-- f:facet name="header">  
+		                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+		            </f:facet-->  
+		  
+		            <h:outputText value="#{msg.impuestoDescripcion}" />  
+		            <h:outputText value="#{impuetoTlb.selectedImpuesto.descripcion}" />  
+		  
+		            <h:outputText value="#{msg.impuestoValorPorcentaje}" />  
+		            <h:outputText value="#{impuetoTlb.selectedImpuesto.valorPorcentaje}" />  
+		            
+		        </h:panelGrid>  
+		    </p:dialog>  
+		  
+  </h:form>  
+</f:view>
+		           
+</ui:define>    
+		  
+		      
+		      
+		 
+</ui:composition>		 
