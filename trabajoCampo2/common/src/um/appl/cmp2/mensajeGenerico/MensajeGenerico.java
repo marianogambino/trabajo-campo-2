@@ -3,10 +3,7 @@
  */
 package um.appl.cmp2.mensajeGenerico;
 
-import java.io.Serializable;
-
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-
 import um.appl.cmp2.mensajeGenerico.itf.MensajeGenericoItf;
 
 
@@ -14,7 +11,7 @@ import um.appl.cmp2.mensajeGenerico.itf.MensajeGenericoItf;
  * @author Mariano
  *
  */
-public class MensajeGenerico implements MensajeGenericoItf,Serializable {
+public class MensajeGenerico implements MensajeGenericoItf {
 
 	/**
 	 * 
