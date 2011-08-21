@@ -7,10 +7,25 @@
 		        template="../../facelets/templates/mainTmp.xhtml">
 	
 <ui:define name="header">
-	     <h:graphicImage id="imgEnerArg" value="../../images/enerArg.jpg" ></h:graphicImage>
+	     
+	     
+		<table align="left" border="0">
+	 		
+	 		<tr>	
+				<td align="left" width="930"><h:graphicImage id="imgEnerArg" value="../../images/enerArg.jpg" ></h:graphicImage></td>
+				<td align="right"><p:graphicText value="#{msg.mensajeBienvenida}" fontName="Arial" fontSize="12"  /></td>
+				<td align="right"><p:graphicText  value="#{usuarioLoginForm.usuario.nombre}" fontName="Arial" fontSize="12" fontStyle="bold" /></td>	
+			</tr>
+		</table>	     
+	     
 </ui:define>
+
 <ui:define name="navigation">
-	<p:menubar model="#{menuBean.model}" />           
+	<table align="left" border="0">
+		<tr>
+			<td width="1280"><p:menubar model="#{menuBean.model}" /></td>
+		</tr>
+	</table>       
 </ui:define>
 	
 <ui:define name="content">
@@ -19,10 +34,10 @@
 		 
 		<h:form>
 	
-	  		<table align="center" border="0">
+	  		<table align="left" border="0">
 	     
 	    	<tr>	
-				<td height="455"><img src="../../images/presentacion.jpg" alt="" /></td>		   
+				<td align="center" width="1200" height="455"><img src="../../images/presentacion.jpg" alt="" /></td>		   
 			</tr>	    
 			  
 	  		</table>
@@ -35,12 +50,7 @@
 
 <ui:define name="footer">
 		       
- 		<tr>	
-			<!-- td><p:separator /></td-->
-			<td> <p:graphicText value="#{msg.mensajeBienvenida}" fontName="Arial" fontSize="12"  /></td>
-			<td> <p:graphicText  value="#{usuarioLoginForm.usuario.nombre}" fontName="Arial" fontSize="12" fontStyle="bold" /></td>	
-		</tr>
-
+ 		
 </ui:define>
 
 </ui:composition>
