@@ -3,6 +3,8 @@
  */
 package um.appl.cmp2.usuario.bdlg;
 
+import org.springframework.stereotype.Component;
+
 import um.appl.cmp2.commons.common.Common;
 import um.appl.cmp2.srvLoc.SrvLoc;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
@@ -14,9 +16,13 @@ import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
  * @author Mariano
  *
  */
-@SuppressWarnings("serial")
+@Component("usuarioBDlg") 
 public class UsuarioBDlg extends Common implements UsuarioBDlgItf 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6763975009451890312L;
 	private SrvLoc srvLoc;
 	
 	public UsuarioBDlg(){}
@@ -66,8 +72,8 @@ public class UsuarioBDlg extends Common implements UsuarioBDlgItf
 	 */
 	public UsuarioCObjItf validarUsuarioPassword(String nomUsu, String pass)
 	{		
-		srvLoc = new SrvLoc();
-		return srvLoc.getService().validarUsuarioPassword(nomUsu, pass);
+		//srvLoc = new SrvLoc();
+		return getSrvLoc().getService().validarUsuarioPassword(nomUsu, pass);
 	}
 
 	/**

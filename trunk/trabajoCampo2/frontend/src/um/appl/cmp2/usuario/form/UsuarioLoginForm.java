@@ -4,10 +4,8 @@
 package um.appl.cmp2.usuario.form;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-
-import org.springframework.stereotype.Controller;
-
 import um.appl.cmp2.commons.common.Common;
 import um.appl.cmp2.usuario.bdlg.UsuarioBDlg;
 import um.appl.cmp2.usuario.cobj.UsuarioCObj;
@@ -17,18 +15,25 @@ import um.appl.cmp2.usuario.itf.UsuarioCObjItf;
  * @author Mariano
  *
  */
-@SuppressWarnings("serial")
-@Controller
-@ManagedBean(name="usuarioLoginForm")
+
+@ManagedBean
 @SessionScoped
 public class UsuarioLoginForm extends Common
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6511114147312440689L;
 	private UsuarioCObjItf usuario;
 	private String message;
-	private UsuarioBDlg blg;
+	
+	@ManagedProperty("#{usuarioBlg}") 
+	private UsuarioBDlg usuarioBlg;
 	
 	private String nombre;
 	private String pass;
+	
+	
 	
 	/**
 	 * @return the nombre
@@ -71,7 +76,7 @@ public class UsuarioLoginForm extends Common
 	 */
 	public UsuarioLoginForm(UsuarioBDlg usuarioBlg)
 	{
-		this.blg = usuarioBlg;
+		this.usuarioBlg = usuarioBlg;
 		usuario = new UsuarioCObj();
 	}
 	
@@ -81,19 +86,19 @@ public class UsuarioLoginForm extends Common
 	}
 	
 	/**
-	 * @return the blg
+	 * @return the usuarioBlg
 	 */
-	public UsuarioBDlg getBlg() {
-		return blg;
+	public UsuarioBDlg getUsuarioBlg() {
+		return usuarioBlg;
 	}
 
 	/**
-	 * @param blg the blg to set
+	 * @param usuarioBlg the usuarioBlg to set
 	 */
-	public void setBlg(UsuarioBDlg blg) {
-		this.blg = blg;
+	public void setUsuarioBlg(UsuarioBDlg usuarioBlg) {
+		this.usuarioBlg = usuarioBlg;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -101,8 +106,7 @@ public class UsuarioLoginForm extends Common
 	public String validarUsuario()
 	{
 		String path = null;
-		blg = new UsuarioBDlg();
-		usuario = (UsuarioCObjItf) getBlg().validarUsuarioPassword(getNombre() ,getPass());
+		usuario = (UsuarioCObjItf) this.getUsuarioBlg().validarUsuarioPassword(getNombre() ,getPass());
 		
 		if(!usuario.isMensaje())
 			path = "/tc2/main/main.xhtml?faces-redirect=true";//Constantes.MAIN; //Agregar una constante
