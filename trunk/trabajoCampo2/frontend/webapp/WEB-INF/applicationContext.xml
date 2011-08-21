@@ -13,6 +13,9 @@
 	 					 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 	 
 <!-- Inyeccion de dependencias  -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
+	<context:annotation-config />
 	
 	<bean id="usuarioSrvLoc" class="um.appl.cmp2.usuario.srvLoc.UsuarioSrvLoc" scope="prototype"/>	
 	
@@ -26,8 +29,8 @@
 		<property name="srv" ref="srvLoc" />
 	</bean>
 	
-	<!-- bean id="usuarioLoginForm" class="um.appl.cmp2.usuario.form.UsuarioLoginForm" scope="prototype" -->		
-		<!-- constructor-arg><ref bean="usuarioBlg"/></constructor-arg-->
+	<!-- bean id="usuarioLogin" class="um.appl.cmp2.usuario.form.UsuarioLoginForm" scope="prototype" -->		
+		<!-- constructor-arg><ref bean="usuarioBlg"/></constructor-arg -->
 		<!-- property name="blg" ref="usuarioBlg" /-->
 	<!-- /bean-->
 	
