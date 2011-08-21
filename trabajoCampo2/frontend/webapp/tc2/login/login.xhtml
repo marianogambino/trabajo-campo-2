@@ -24,10 +24,12 @@
 		    <h:panelGrid columns="2" >  
 		      
 		       <h:outputLabel>#{msg.username}</h:outputLabel>  
-		       <h:inputText id="username" value="#{usuarioLoginForm.nombre}" required="true" label="Username" maxlength="30" size="15" />
+		       <h:inputText id="username" label="#{msg.username}" value="#{usuarioLoginForm.nombre}" required="true" maxlength="30" size="15" />
+		       	<!-- Agregar <f:validateBean / -->
+		       	<!-- Agregar <f:validateBean / -->
 		       	
 		       <h:outputLabel>#{msg.password}</h:outputLabel>  
-		       <h:inputText id="password" value="#{usuarioLoginForm.pass}" required="true" label="Password" maxlength="30" size="15"/>  
+		       <h:inputText id="password" label="#{msg.password}" value="#{usuarioLoginForm.pass}" required="true" maxlength="30" size="15"/>  
 		        <p:messages>#{usuarioLogin.message}</p:messages>
 		      	 
  		  	   <tr>

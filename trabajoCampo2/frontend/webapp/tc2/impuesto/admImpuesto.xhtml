@@ -12,19 +12,22 @@
 <f:view contentType="text/html">   		  
   <h:form id="form">  
   
-	<table align="center" border="0">
+	<table align="left" border="0" width="1200">
      
-    	<tr><td height="150" width="400"></td></tr>
+    	<tr><td height="60" width="100"></td></tr>
   		<tr>	
+			<td height="150" width="350"></td>
 			<td>
   		   
-		    <p:dataTable var="imp" value="#{impuetoTlb.impuestos}"  
-		                 selection="#{impuetoTlb.selectedImpuesto}" selectionMode="single"
-		                 styleClass=".ui-datatable .ui-datatable-data td"
+		    <p:dataTable var="imp" value="#{impuestoView.impuestos}"  id="impuestoTable"
+		                 selection="#{impuestoView.selectedImpuesto}" selectionMode="single"
+		                 styleClass=".ui-datatable .ui-datatable-data td" 
+		                 onRowSelectUpdate="displayView"
+		                 onRowSelectComplete="impuestoDialogView.show()"
 		                  >  
 		  
 		        <f:facet name="header">  
-		            Click "View" button after selecting a row to see details  
+		            <h:outputText value="#{msg.adminImpuestos}" />    
 		        </f:facet>  
 		  
 		        <p:column >  
@@ -40,27 +43,20 @@
 		            </f:facet>  
 		            <h:outputText value="#{imp.valorPorcentaje}" />  
 		        </p:column>
-		          
-		      	
-				  
-				  <!-- table align="left" border="0" -->
-				  	
-					<f:facet name="footer" >
+		          				  	
+				<f:facet name="footer" align="left" >
 					
-					
-			             <p:commandButton value="Consulta" update="form:display" oncomplete="impuestoDialog.show()"/> 
-			    	  
-			     	
-					   	          
-			             <p:commandButton value="Agregar" update="form:display" oncomplete="impuestoDialog.show()"/>       
-			  	    
-			         </f:facet>  
+			        <!-- p:commandButton value="Consultar" update="form:displayView" oncomplete="impuestoDialogView.show()"/> 
+			        
+			         p:commandButton value="Modificar" update="form:display" oncomplete="impuestoDialog.show()"/>
+			        <p:commandButton value="Eliminar" update="form:display" oncomplete="impuestoDialog.show()"/--> 
+			              
+			  	    <p:commandButton value="Agregar" update="form:displayAdd" oncomplete="impuestoDialogAdd.show()"/>
+			  	</f:facet>  
 			         
-			       <!-- /table-->
-			       
 		    </p:dataTable> 
-		     
-	 	</td>		   
+	 	</td>		
+	 	<td height="150" width="400"></td>   
 	  </tr>	  
 	  <tr><td height="201" ></td></tr>  
 		  
@@ -68,20 +64,45 @@
 		 
 	<!-- PopUp - Dialog --> 
 		 
-		    <p:dialog header="#{msg.impuestoDetalle}" widgetVar="impuestoDialog" resizable="false"  
-		              width="200" showEffect="clip" hideEffect="fold">  
+		    <p:dialog header="#{msg.impuestoDetalle}" widgetVar="impuestoDialogAdd" resizable="false"  
+		              width="350" height="200" modal="true">  
 		  
-		        <h:panelGrid id="display" columns="2" cellpadding="4">  
+		        <h:panelGrid id="displayAdd" columns="2" cellpadding="4">  
 		  
 		            <!-- f:facet name="header">  
 		                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
 		            </f:facet-->  
 		  
 		            <h:outputText value="#{msg.impuestoDescripcion}" />  
-		            <h:outputText value="#{impuetoTlb.selectedImpuesto.descripcion}" />  
+		            <h:inputText id="descripcion" label="#{msg.impuestoDescripcion}" value="#{impuestoView.descripcion}" />  
 		  
 		            <h:outputText value="#{msg.impuestoValorPorcentaje}" />  
-		            <h:outputText value="#{impuetoTlb.selectedImpuesto.valorPorcentaje}" />  
+		            <h:inputText id="valor" label="#{msg.impuestoValorPorcentaje}" value="#{impuestoView.valor}" />  
+		            
+		            <p:commandButton value="Add" actionListener="#{impuestoView.add}" update="impuestoTable" oncomplete="impuestoDialogAdd.hide();" >
+		            	<f:ajax render="impuestoTable"/>
+		            </p:commandButton>
+		            
+		        </h:panelGrid>  
+		    </p:dialog>  
+		    
+		    
+		    <p:dialog header="#{msg.impuestoDetalle}" widgetVar="impuestoDialogView" resizable="false"  
+		              width="350" height="200" modal="true">  
+		  
+		        <h:panelGrid id="displayView" columns="2" cellpadding="4">  
+		  
+		            <!-- f:facet name="header">  
+		                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+		            </f:facet-->  
+		  
+		            <h:outputText value="#{msg.impuestoDescripcion}" />  
+		            <h:outputText value="#{impuestoView.descripcion}" />   
+		  
+		            <h:outputText value="#{msg.impuestoValorPorcentaje}" />  
+		            <h:outputText value="#{impuestoView.valor}" />  	            
+		            
+		            <p:commandButton value="Cerrar" oncomplete="impuestoDialogView.hide();" />
 		            
 		        </h:panelGrid>  
 		    </p:dialog>  
@@ -90,8 +111,5 @@
 </f:view>
 		           
 </ui:define>    
-		  
-		      
-		      
 		 
 </ui:composition>		 
