@@ -13,4 +13,9 @@ public class Constantes
 	public static String ERROR_USUARIO = "Nombre de Usuario o Constraseña Invalida";
 	public static String MAIN = "main";
 	
+	public static String TEXTO_VACIO = "";
+	public static String TIPO_ERROR_ERROR = "TIPO_ERROR_ERROR";
+	
+	public static String ERRROR_USUARIO_CONTRASEÑA = "Usuario y Contraseña no validos";
+	
 }
